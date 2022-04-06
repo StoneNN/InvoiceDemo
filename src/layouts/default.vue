@@ -1,8 +1,8 @@
 <!--
  * @Author: Nxf
  * @Date: 2022-04-05 18:42:09
- * @LastEditors: Nn
- * @LastEditTime: 2022-04-06 17:22:29
+ * @LastEditors: Nxf
+ * @LastEditTime: 2022-04-07 00:33:23
  * @Descripttion: Default Layout
 -->
 
@@ -28,7 +28,10 @@
             <a-sub-menu key="sub1" @titleClick="titleClick">
               <span slot="title"><a-icon type="account-book" /><span>财务信息</span></span>
               <a-menu-item-group key="g1">
-                <a-menu-item key="10">
+                <a-menu-item 
+                  key="10"
+                  @click="jumpToPage"
+                >
                   发票
                 </a-menu-item>
                 <a-menu-item key="2">
@@ -112,6 +115,12 @@
       titleClick(e) {
         console.log('titleClick', e);
       },
+      jumpToPage(){
+        console.log('---- jumpToPage ----',this.$router);
+        this.$router.push({
+          name:'invoiceList'
+        })
+      }
     },
   };
 </script>  
@@ -145,7 +154,7 @@
     height: 75vh;
   }
   #components-layout-demo-basic .ant-layout-content {
-    background: rgba(16, 142, 233, 1);
+    background: rgb(204, 210, 214);
     color: #fff;
   }
   #components-layout-demo-basic > .ant-layout {
