@@ -1,8 +1,8 @@
 /*
  * @Author: Nxf
  * @Date: 2022-04-05 00:23:43
- * @LastEditors: Nxf
- * @LastEditTime: 2022-04-05 01:40:44
+ * @LastEditors: Nn
+ * @LastEditTime: 2022-04-06 15:00:11
  * @Descripttion: 
  */
 module.exports = {
@@ -12,7 +12,11 @@ module.exports = {
   plugins: [
     [
        "import",
-       { libraryName: "ant-design-vue", libraryDirectory: "es", style: true }
+        { 
+          libraryName: "ant-design-vue", 
+          libraryDirectory: "es", 
+          style: "css" 
+        }
     ]
   ]
 }

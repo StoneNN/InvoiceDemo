@@ -1,8 +1,8 @@
 <!--
  * @Author: Nxf
  * @Date: 2022-04-05 18:38:32
- * @LastEditors: Nxf
- * @LastEditTime: 2022-04-05 18:45:17
+ * @LastEditors: Nn
+ * @LastEditTime: 2022-04-06 16:19:47
  * @Descripttion: Login Layout
 -->
 <template>
@@ -17,7 +17,7 @@
   </div>
 </template>
 
-<style>
+<style scoped>
 #components-layout-demo-basic {
   text-align: center;
 }

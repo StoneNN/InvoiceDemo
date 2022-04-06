@@ -1,8 +1,8 @@
 /*
  * @Author: Nxf
  * @Date: 2022-04-05 01:00:19
- * @LastEditors: Nxf
- * @LastEditTime: 2022-04-06 00:05:32
+ * @LastEditors: Nn
+ * @LastEditTime: 2022-04-06 17:38:37
  * @Descripttion: 整个应用的路由器
  */
 
@@ -14,66 +14,71 @@ import loginLot from '../layouts/login.vue';
 import defaultLot from '../layouts/default.vue';
 
 //引入组件
-import Invoice from '../pages/Invoice.vue';
-import InvoiceDetail from '../pages/InvoiceDetail.vue';
-import User from '../pages/User.vue';
+import Home from '../pages/home.vue';
+import InvoiceList from '../pages/invoice/InvoiceList.vue';
+import InvoiceDetail from '../pages/invoice/InvoiceDetail.vue';
+// import User from '../pages/User.vue';
 
 Vue.use(VueRouter);
 
 //登录路由
 const loginRoutes = [
     {
+        path:'/userLogin',
         name:'yongHuDengLu',
-        path:'/userlogin',
         component:loginLot
     }
 ];
 const invoiceRoutes = [
     {
-        name:'faPiaoLieBiao',
-        path:'/invoice',
-        component:Invoice,
+        path:'/',
+        name:'home',
+        component:defaultLot,
+        redirect:'/home',
         children:[
             {
-                name:'faPiaoXiangQing',
-                path:'invoiceDeatil',
-                component:InvoiceDetail
+                path:'home',
+                name:'home',
+                component:Home
+               
             }
         ]
     },
+    {
+        path:'/1',
+        name:'home',
+        component:defaultLot,
+        redirect:'/invoiceList',
+        children:[
+            {
+                path:'invoiceList',
+                name:'invoiceList',
+                component:InvoiceList,
+                children:[
+                    {
+                        path:'invoiceDetail',
+                        name:'invoiceDetail',
+                        component:InvoiceDetail
+                    }
+                ]
+            }
+        ]
+    }
 ];
 
 const allRoutes = [...loginRoutes, ...invoiceRoutes];
 
-const createRouter = () => {
-    const routers = [...allRoutes]
-    return new VueRouter({
-      scrollBehavior: () => ({ y: 0 }),
-      routes: routers
-    })
-  }
+// const createRouter = () => {
+//     const routers = [...allRoutes]
+//     return new VueRouter({
+//       scrollBehavior: () => ({ y: 0 }),
+//       routes: routers
+//     })
+//   }
   
 //创建一个路由器
 const router = new VueRouter({
-    routes:[
-        {
-            name:'faPiaoLieBiao',
-            path:'/invoice',
-            component:Invoice,
-            children:[
-                {
-                    name:'faPiaoXiangQing',
-                    path:'invoiceDeatil',
-                    component:InvoiceDetail
-                }
-            ]
-        },
-        {
-            name:'yongHu',
-            path:'/user',
-            component:User
-        }
-    ]
+    routes:allRoutes
 });
 
 //全局前置路由守卫 ---- 初始化的时候被调用；每次路由切换之前被调用

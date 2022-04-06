@@ -1,8 +1,8 @@
 <!--
  * @Author: Nxf
  * @Date: 2022-04-05 00:39:14
- * @LastEditors: Nxf
- * @LastEditTime: 2022-04-05 00:46:59
+ * @LastEditors: Nn
+ * @LastEditTime: 2022-04-06 17:32:30
  * @Descripttion: 
 -->
 
@@ -11,7 +11,7 @@
 </template>
 <script>
     export default {
-        name:"InvoiceCpnt",
+        name:"InvoiceListCpnt",
     }
 </script>
 <style scoped>
