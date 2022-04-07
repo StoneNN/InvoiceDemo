@@ -2,7 +2,7 @@
  * @Author: Nxf
  * @Date: 2022-04-05 18:42:09
  * @LastEditors: Nxf
- * @LastEditTime: 2022-04-08 01:12:42
+ * @LastEditTime: 2022-04-08 01:30:35
  * @Descripttion: Default Layout
  11111
  1`1111
@@ -125,13 +125,11 @@ export default {
         {
           key: '4',
           title: '用户信息',
-          path: '',
           icon:'team',
           children:[
               {
                   key: '5',
                   title: '用户',
-                  path: '',
                   icon:'-',
                   children: [
                     { 
@@ -143,7 +141,7 @@ export default {
                     {
                         key: '7',
                         title: 'VIP用户',
-                        path: '/user',
+                        path: '/home',
                         icon:'-',
                     }
                   ],
@@ -165,10 +163,10 @@ export default {
     // 点击菜单，路由跳转,注意的是当点击MenuItem才会触发此函数
     menuClick({ item, key, keyPath }) {
       console.log(item,keyPath);
-      // 获取到当前的key,并且跳转
+      // 获取到当前的key,并且跳转[.catch()-->防止重复点击同一个menu报错]
       this.$router.push({
         path: key
-      })
+      }).catch(err=>err);
     },
     onOpenChange(openKeys) {
       // 将当前打开的父级菜单存入缓存中
