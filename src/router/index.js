@@ -17,7 +17,7 @@ import defaultLot from '../layouts/default.vue';
 import Home from '../pages/home.vue';
 import InvoiceList from '../pages/invoice/InvoiceList.vue';
 import InvoiceDetail from '../pages/invoice/InvoiceDetail.vue';
-// import User from '../pages/User.vue';
+import User from '../pages/User.vue';
 
 Vue.use(VueRouter);
 
@@ -53,7 +53,13 @@ const invoiceRoutes = [
                         component:InvoiceDetail
                     }
                 ]
-            }
+            },
+            {
+                path:'user',
+                name:'user',
+                component:User
+            },
+        
         ]
     }
 ];
