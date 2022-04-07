@@ -1,166 +1,185 @@
 <!--
  * @Author: Nxf
  * @Date: 2022-04-05 18:42:09
- * @LastEditors: Nxf
- * @LastEditTime: 2022-04-07 00:33:23
+ * @LastEditors: Nn
+ * @LastEditTime: 2022-04-07 17:35:04
  * @Descripttion: Default Layout
+ 11111
+ 1`1111
+ 222222
+ 333333
+
 -->
 
+
 <template>
-  <div id="components-layout-demo-basic">
-    <a-layout>
-      <!-- 页头 -->
-      <a-layout-header>智力竞技比赛平台</a-layout-header>
-      <a-layout>
-        <!-- 选择菜单 -->
-        <a-layout-sider>
+  <a-layout id="components-layout-demo-custom-trigger" style="height:100%">
+    <a-layout-sider theme="light" v-model="collapsed" :trigger="null" collapsible>
+      <div >
           <a-menu
-            style="width: 100%"
-            :default-selected-keys="['1']"
-            :open-keys.sync="openKeys"
+            :inlineIndent="inlineIndent"
+            :defaultSelectedKeys="[$route.path]"
+            :openKeys="openKeys"
             mode="inline"
-            @click="handleClick"
-          >
-            <a-menu-item key="1">
-              <a-icon type="home" />
-              <span>首  页</span>
-            </a-menu-item>
-            <a-sub-menu key="sub1" @titleClick="titleClick">
-              <span slot="title"><a-icon type="account-book" /><span>财务信息</span></span>
-              <a-menu-item-group key="g1">
-                <a-menu-item 
-                  key="10"
-                  @click="jumpToPage"
-                >
-                  发票
-                </a-menu-item>
-                <a-menu-item key="2">
-                  Option 2
-                </a-menu-item>
-              </a-menu-item-group>
-              
-            </a-sub-menu>
-            <a-sub-menu key="sub2" @titleClick="titleClick">
-              <span slot="title"><a-icon type="appstore" /><span>比赛信息</span></span>
-              <a-menu-item key="5">
-                Option 5
+            :inline-collapsed="collapsed"
+            @openChange="onOpenChange"
+            @click="menuClick">
+            <!-- 菜单遍历的开始 -->
+            <template v-for="item in list">
+              <!-- 如果当前遍历项没有children，视为子菜单项，注意所有的key都是path用于路由跳转，以及当前选中记录 -->
+              <a-menu-item v-if="!item.children" :key="item.path">
+                <i :class="item.icon" />
+                <span>{{ item.title }}</span>
               </a-menu-item>
-              <a-menu-item key="6">
-                Option 6
-              </a-menu-item>
-              <a-sub-menu key="sub3" title="Submenu">
-                <a-menu-item key="7">
-                  Option 7
-                </a-menu-item>
-                <a-menu-item key="8">
-                  Option 8
-                </a-menu-item>
-              </a-sub-menu>
-            </a-sub-menu>
-            <a-sub-menu key="sub4">
-              <span slot="title"><a-icon type="setting" /><span>选手信息</span></span>
-              <a-menu-item key="9">
-                Option 9
-              </a-menu-item>
-              <a-menu-item key="10">
-                Option 10
-              </a-menu-item>
-              <a-menu-item key="11">
-                Option 11
-              </a-menu-item>
-              <a-menu-item key="12">
-                Option 12
-              </a-menu-item>
-            </a-sub-menu>
-          </a-menu>
-        </a-layout-sider>
-        <!-- 内容区 -->
-        <a-layout-content>
-          <router-view />
-        </a-layout-content>
-      </a-layout>
-      <!-- 页脚 -->
-      <a-layout-footer>北京欧德慧通信息技术有限公司</a-layout-footer>
+              <!-- 否则视为子菜单，传入菜单信息并且运用下面定义的函数式组件 -->
+              <sub-menu v-else :key="item.path" :menu-info="item" />
+            </template>
+        </a-menu>
+      </div>
+    </a-layout-sider>
+    <a-layout>
+      <a-layout-content :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '280px' }">
+        <router-view/>
+      </a-layout-content>
     </a-layout>
-  </div>
+  </a-layout>
 </template>
-
-
-
 <script>
   import Vue from "vue";
-  import { Layout, Icon, Menu} from "ant-design-vue";
+  import { Layout, Table, Icon, Menu} from "ant-design-vue";
   import 'ant-design-vue/dist/antd.css';
   
-  Vue.use(Layout).use(Icon).use(Menu);
+  Vue.use(Layout).use(Table).use(Icon).use(Menu);
   
-  export default {
-    name:"defaultLayout",
-    data() {
-      return {
-        // collapsed: false,
-        current: ['mail'],
-        openKeys: ['1'],
-      };
+// 定义函数式组件
+const SubMenu = {
+  template: `
+      <a-sub-menu :key="menuInfo.path" v-bind="$props" v-on="$listeners">
+        <span slot="title">
+          <i :class="menuInfo.icon" /><span>{{ menuInfo.title }}</span>
+        </span>
+        <template v-for="item in menuInfo.children">
+          <a-menu-item v-if="!item.children" :key="item.path">
+            <i :class="item.icon" />
+            <span>{{ item.title }}</span>
+          </a-menu-item>
+          <sub-menu v-else :key="item.path" :menu-info="item" />
+        </template>
+      </a-sub-menu>
+    `,
+  name: 'SubMenu',
+  // must add isSubMenu: true 此项必须被定义
+  isSubMenu: true,
+  props: {
+    // 解构a-sub-menu的属性，也就是文章开头提到的为什么使用函数式组件
+    ...Menu.SubMenu.props,
+    // 接收父级传递过来的菜单信息
+    menuInfo: {
+      type: Object,
+      default: () => ({}),
     },
-    watch: {
-      openKeys(val) {
-        console.log('openKeys', val);
-      },
+  },
+};
+export default {
+  data() {
+    return {
+      // 菜单缩进
+      inlineIndent:12,
+      // 默认不折叠
+      collapsed: false,
+      // 全部顶级父节点,用来控制所有父级菜单只展开其中的一项，可用遍历菜单信息进行赋值
+      rootSubmenuKeys: ['/infomationManage','/safeInfoManage','/qualityInfoManage'],
+      // 展开的父菜单项
+      openKeys: [], 
+      // 选中的子菜单项
+      defaultSelectedKeys: [this.$route.path], 
+      // 菜单信息，可从后台获取
+      list: [
+        {
+          key: '1',
+          title: '项目信息管理',
+          path: '/infomationManage',
+          icon:'iconfont icon-information'
+        },
+        {
+          key: '2',
+          title: '安全信息管理',
+          path: '/safeInfoManage',
+          icon:'iconfont icon-anquan',
+          children: [
+            {
+              key: '2.1',
+              title: '安全风险管理',
+              path: '/safeRisk',
+              icon:'',
+              children: [
+                { 
+                  key: '2.1.1',
+                  title: '风险分类管理',
+                  path: '/riskClassifyManage',
+                  icon:'',
+                },
+                {
+                    key: '2.1.2',
+                    title: '分类辨识',
+                    path: '/classifyIdentity',
+                    icon:'',
+                }
+              ],
+            },
+          ],
+        },
+        {
+          key: '3',
+          title: '质量信息管理',
+          path: '/qualityInfoManage',
+          icon:'iconfont icon-zhiliang',
+          children:[
+              {
+                  key: '3.1',
+                  title: '质量控制点管理',
+                  path: '/controlPointManage',
+                  icon:'',
+              }
+          ]
+        }
+      ],
+    }
+  },
+  created(){
+    // 将从缓存中取出openKeys
+    const openKeys = window.sessionStorage.getItem('openKeys')
+    if(openKeys){
+      // 存在即赋值
+      this.openKeys = JSON.parse(openKeys)
+    }
+  },
+  methods: {
+    // 点击菜单，路由跳转,注意的是当点击MenuItem才会触发此函数
+    menuClick({ item, key, keyPath }) {
+      console.log(item,keyPath);
+      // 获取到当前的key,并且跳转
+      this.$router.push({
+        path: key
+      })
     },
-    methods: {
-      handleClick(e) {
-        console.log('click', e);
-      },
-      titleClick(e) {
-        console.log('titleClick', e);
-      },
-      jumpToPage(){
-        console.log('---- jumpToPage ----',this.$router);
-        this.$router.push({
-          name:'invoiceList'
-        })
+    onOpenChange(openKeys) {
+      // 将当前打开的父级菜单存入缓存中
+      window.sessionStorage.setItem('openKeys', JSON.stringify(openKeys))
+      //  控制只打开一个
+      const latestOpenKey = openKeys.find(key => this.openKeys.indexOf(key) === -1);
+      if (this.rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
+        this.openKeys = openKeys;
+      } else {
+        this.openKeys = latestOpenKey ? [latestOpenKey] : [];
       }
     },
-  };
-</script>  
-
-
-
-<style scoped>
-  #components-layout-demo-basic {
-    text-align: center;
-    height: 100%;
-  }
-  #components-layout-demo-basic .ant-layout-header,
-  #components-layout-demo-basic .ant-layout-footer {
-    background: #7dbcea;
-    color: #fff;
-    padding: 0;
-  }
-  #components-layout-demo-basic .ant-layout-header {
-    height: 15vh;
-    line-height: 15vh;
-    font-size: 50px;
-    font-weight: bolder;
-  }
-  #components-layout-demo-basic .ant-layout-footer {
-    height: 10vh;
-    line-height: 10vh;
-  }
-  #components-layout-demo-basic .ant-layout-sider {
-    background: #3ba0e9;
-    color: #fff;
-    height: 75vh;
-  }
-  #components-layout-demo-basic .ant-layout-content {
-    background: rgb(204, 210, 214);
-    color: #fff;
-  }
-  #components-layout-demo-basic > .ant-layout {
-    margin-bottom: 48px;
-  }
-  #components-layout-demo-basic > .ant-layout:last-child {
-    margin: 0;
-  }
+  },
+  // 注册局部组件
+  components: {
+    'sub-menu': SubMenu,
+  },
+};
+</script>
+<style>
 </style>

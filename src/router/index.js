@@ -1,8 +1,8 @@
 /*
  * @Author: Nxf
  * @Date: 2022-04-05 01:00:19
- * @LastEditors: Nxf
- * @LastEditTime: 2022-04-06 22:02:46
+ * @LastEditors: Nn
+ * @LastEditTime: 2022-04-07 16:30:21
  * @Descripttion: 整个应用的路由器
  */
 
@@ -41,15 +41,7 @@ const invoiceRoutes = [
                 name:'home',
                 component:Home
                
-            }
-        ]
-    },
-    {
-        path:'/invoiceList',
-        name:'invoiceList',
-        component:defaultLot,
-        redirect:'/invoiceList',
-        children:[
+            },
             {
                 path:'invoiceList',
                 name:'invoiceList',

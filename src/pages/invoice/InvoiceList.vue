@@ -1,14 +1,18 @@
 <!--
  * @Author: Nxf
  * @Date: 2022-04-05 00:39:14
- * @LastEditors: Nxf
- * @LastEditTime: 2022-04-07 01:03:28
+ * @LastEditors: Nn
+ * @LastEditTime: 2022-04-07 16:02:45
  * @Descripttion: 
 -->
 
 <template>
-  <a-table :columns="columns" :data-source="data">
-
+  <a-table
+    :columns="columns" 
+    :data-source="data"
+    :row-key="record => record.id"
+  >
+    <span slot="invoiceId" slot-scope="text">{{ text }}</span>
   </a-table>
 </template>
 <script>
@@ -23,6 +27,7 @@
             title: '发票号码',
             dataIndex:'invoiceId',
             key: 'invoiceId',
+            scopedSlots: { customRender: 'invoiceId' },
         },
         {
             title: '日期',
@@ -87,7 +92,7 @@
 </script>
 <style lang='less' scoped>
     /deep/.ant-table {
-        background-color: lightgray;
+        background-color: white;
         margin: 10px 20px
     }
 </style>

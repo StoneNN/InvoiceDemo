@@ -1,8 +1,8 @@
 <!--
  * @Author: Nxf
  * @Date: 2022-04-05 00:23:56
- * @LastEditors: Nxf
- * @LastEditTime: 2022-04-06 21:58:59
+ * @LastEditors: Nn
+ * @LastEditTime: 2022-04-07 16:15:18
  * @Descripttion: 
 -->
 # invoice_demo
@@ -35,4 +35,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 Vue3版本匹配VueX的4版本,
 Vue2版本匹配VueX的3版本,
 否则报错。
+```
+带:(冒号)的表示绑定的是表达式
+不带的表示绑定的就是值
 ```
