@@ -2,7 +2,7 @@
  * @Author: Nxf
  * @Date: 2022-04-05 00:39:14
  * @LastEditors: Nxf
- * @LastEditTime: 2022-04-09 01:01:43
+ * @LastEditTime: 2022-04-09 02:23:33
  * @Descripttion: 
 -->
 
@@ -114,8 +114,9 @@
             frawer:'刘梅',
             content:[
                 {
+                    id:'001',
                     contentName:'蒙牛无菌枕纯牛奶',
-                    style:'',
+                    style:'一箱24盒',
                     unit:'箱',
                     quantity:'200', 
                     unitPrice:'45',
@@ -124,8 +125,9 @@
                     tax:'1170'
                 },
                 {
+                    id:'002',
                     contentName:'蒙牛特仑苏纯牛奶',
-                    style:'',
+                    style:'一箱12盒',
                     unit:'箱',
                     quantity:'100', 
                     unitPrice:'65',
@@ -162,8 +164,9 @@
             frawer:'李娜',
             content:[
                 {
+                    id:'001',
                     contentName:'蒙牛无菌枕纯牛奶',
-                    style:'',
+                    style:'一箱24盒',
                     unit:'箱',
                     quantity:'200', 
                     unitPrice:'45',
@@ -172,8 +175,9 @@
                     tax:'1170'
                 },
                 {
+                    id:'002',
                     contentName:'蒙牛特仑苏纯牛奶',
-                    style:'',
+                    style:'一箱12盒',
                     unit:'箱',
                     quantity:'100', 
                     unitPrice:'65',
@@ -210,8 +214,9 @@
             frawer:'杨坤',
             content:[
                 {
+                    id:'001',
                     contentName:'蒙牛无菌枕纯牛奶',
-                    style:'',
+                    style:'一箱24盒',
                     unit:'箱',
                     quantity:'200', 
                     unitPrice:'45',
@@ -220,8 +225,9 @@
                     tax:'1170'
                 },
                 {
+                    id:'002',
                     contentName:'蒙牛特仑苏纯牛奶',
-                    style:'',
+                    style:'一箱12盒',
                     unit:'箱',
                     quantity:'100', 
                     unitPrice:'65',
