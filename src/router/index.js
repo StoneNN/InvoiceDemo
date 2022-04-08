@@ -1,8 +1,8 @@
 /*
  * @Author: Nxf
  * @Date: 2022-04-05 01:00:19
- * @LastEditors: Nn
- * @LastEditTime: 2022-04-08 17:57:45
+ * @LastEditors: Nxf
+ * @LastEditTime: 2022-04-08 23:17:11
  * @Descripttion: 整个应用的路由器
  */
 
@@ -45,29 +45,28 @@ const invoiceRoutes = [
                 component:Home
             },
             {
-                path:'/invoice',
+                path:'/invoiceList',
                 name:'invoice',
                 component:Invoice,
-                redirect:'/invoiceList',
                 children:[
                     {
-                        // path:'',
-                        path:'invoiceList',
+                        path:'',
+                        // path:'invoiceList',
                         name:'invoiceList',
                         component:InvoiceList,
-                        children:[
-                            {
-                                path:'invoiceDetail',
-                                name:'invoiceDetail',
-                                component:InvoiceDetail
-                            }
-                        ]
+                        // children:[
+                        //     {
+                        //         path:'invoiceDetail',
+                        //         name:'invoiceDetail',
+                        //         component:InvoiceDetail
+                        //     }
+                        // ]
                     },
-                    // {
-                    //     path:'invoiceDetail',
-                    //     name:'invoiceDetail',
-                    //     component:InvoiceDetail
-                    // }
+                    {
+                        path:'invoiceDetail',
+                        name:'invoiceDetail',
+                        component:InvoiceDetail
+                    }
                 ]
             },
             {

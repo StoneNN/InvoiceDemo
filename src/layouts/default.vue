@@ -1,8 +1,8 @@
 <!--
  * @Author: Nxf
  * @Date: 2022-04-05 18:42:09
- * @LastEditors: Nn
- * @LastEditTime: 2022-04-08 17:51:36
+ * @LastEditors: Nxf
+ * @LastEditTime: 2022-04-08 23:52:42
  * @Descripttion: Default Layout
  11111
  1`1111
@@ -44,7 +44,6 @@
           <router-view ></router-view>
         </a-layout-content>
       </a-layout>
-      <a-layout-footer>Footer</a-layout-footer>
       <!-- 页脚 -->
       <a-layout-footer>北京欧德慧通信息技术有限公司</a-layout-footer>
     </a-layout>
@@ -117,7 +116,7 @@ export default {
             {
               key: '3',
               title: '发票',
-              path: '/invoice',
+              path: '/invoiceList',
               icon:'-',
             },
           ],

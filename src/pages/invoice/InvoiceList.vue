@@ -1,8 +1,8 @@
 <!--
  * @Author: Nxf
  * @Date: 2022-04-05 00:39:14
- * @LastEditors: Nn
- * @LastEditTime: 2022-04-08 17:52:40
+ * @LastEditors: Nxf
+ * @LastEditTime: 2022-04-09 01:01:43
  * @Descripttion: 
 -->
 
@@ -17,19 +17,17 @@
         </template> -->
         <a slot="id" slot-scope="text">{{text}}</a>
         <span slot="total" slot-scope="text">￥{{text}}</span>
-        <template slot="action" slot-scope=" record">
-            
-            <!-- <router-link 
+        <template slot="action" slot-scope="text,record">
+            <router-link 
                 :to="{
                     path:'/invoiceList/invoiceDetail',
                     query:{
                         invoiceInfo:record
                     }
                 }"
-            > -->
+            >
             <!-- <router-link :to="{name:'invoiceDetail'}" > -->
-            <!-- <router-link :to="{name:'invoiceDetail'}" > -->
-            <router-link to="/invoiceList/invoiceDetail" >
+            <!-- <router-link to="/invoiceList/invoiceDetail" > -->
                 详情
             </router-link>
             <a-divider type="vertical" />
