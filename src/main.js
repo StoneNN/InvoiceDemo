@@ -2,7 +2,7 @@
  * @Author: Nxf
  * @Date: 2022-04-05 00:23:43
  * @LastEditors: Nn
- * @LastEditTime: 2022-04-06 14:43:32
+ * @LastEditTime: 2022-04-08 17:15:44
  * @Descripttion: 
  */
 import Vue from 'vue'
@@ -22,6 +22,7 @@ Vue.use(VueRouter);
 // Vue.use(Antd);//全局引入影响性能，改为随用随取
 
 new Vue({
+  //挂载路由器
   router:router,
   render: h => h(App),
 }).$mount('#app')

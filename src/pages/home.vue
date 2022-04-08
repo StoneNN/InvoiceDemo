@@ -2,7 +2,7 @@
  * @Author: Nn
  * @Date: 2022-04-06 17:34:31
  * @LastEditors: Nn
- * @LastEditTime: 2022-04-07 16:16:22
+ * @LastEditTime: 2022-04-08 11:00:15
  * @Description: 
 -->
 
@@ -21,7 +21,14 @@
 -->
 
 <template>
-    <a-table :columns="columns" :data-source="data">
+<!-- 
+    :row-key="record => record.id" 与 row-key="id" 等效
+ -->
+    <a-table 
+        :columns="columns" 
+        :data-source="data"
+        :row-key="record => record.id"
+    >
         <a slot="name" slot-scope="text">{{ text }}</a>
         <span slot="customTitle"><a-icon type="smile-o" /> Name</span>
         <span slot="action" slot-scope="text, record">
@@ -66,21 +73,21 @@
 
     const data = [
         {
-            key: '1',
+            id: '1',
             name: 'John Brown',
             age: 32,
             address: 'New York No. 1 Lake Park',
             tags: ['nice', 'developer'],
         },
         {
-            key: '2',
+            id: '2',
             name: 'Jim Green',
             age: 42,
             address: 'London No. 1 Lake Park',
             tags: ['loser'],
         },
         {
-            key: '3',
+            id: '3',
             name: 'Joe Black',
             age: 32,
             address: 'Sidney No. 1 Lake Park',

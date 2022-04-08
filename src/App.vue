@@ -2,14 +2,14 @@
  * @Author: Nxf
  * @Date: 2022-04-05 00:23:43
  * @LastEditors: Nn
- * @LastEditTime: 2022-04-06 15:32:18
+ * @LastEditTime: 2022-04-08 15:41:32
  * @Descripttion: 
 -->
 <template>
   <div id="app">
-    <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
 
-    <router-view/>
+    <!-- <router-view :key="$route.fullPath" /> -->
+    <router-view />
   </div>
 </template>
 

@@ -1,8 +1,8 @@
 <!--
  * @Author: Nxf
  * @Date: 2022-04-05 18:42:09
- * @LastEditors: Nxf
- * @LastEditTime: 2022-04-08 01:30:35
+ * @LastEditors: Nn
+ * @LastEditTime: 2022-04-08 17:51:36
  * @Descripttion: Default Layout
  11111
  1`1111
@@ -41,7 +41,7 @@
         </a-layout-sider>
         <!-- 内容区 -->
         <a-layout-content>
-          <router-view />
+          <router-view ></router-view>
         </a-layout-content>
       </a-layout>
       <a-layout-footer>Footer</a-layout-footer>
@@ -117,7 +117,7 @@ export default {
             {
               key: '3',
               title: '发票',
-              path: '/invoiceList',
+              path: '/invoice',
               icon:'-',
             },
           ],

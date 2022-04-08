@@ -2,11 +2,12 @@
  * @Author: Nxf
  * @Date: 2022-04-05 01:00:19
  * @LastEditors: Nn
- * @LastEditTime: 2022-04-07 16:30:21
+ * @LastEditTime: 2022-04-08 17:57:45
  * @Descripttion: 整个应用的路由器
  */
 
 import Vue from 'vue';
+//  --1.--导入路由对象
 import VueRouter from 'vue-router';
 
 //引入布局
@@ -15,13 +16,14 @@ import defaultLot from '../layouts/default.vue';
 
 //引入组件
 import Home from '../pages/home.vue';
+import Invoice from '@/pages/invoice/index.vue';
 import InvoiceList from '../pages/invoice/InvoiceList.vue';
 import InvoiceDetail from '../pages/invoice/InvoiceDetail.vue';
 import User from '../pages/User.vue';
-
+//  --2.--注入VueRouter插件
 Vue.use(VueRouter);
 
-//登录路由
+//路由1
 const loginRoutes = [
     {
         path:'/userLogin',
@@ -29,10 +31,11 @@ const loginRoutes = [
         component:loginLot
     }
 ];
+//路由2
 const invoiceRoutes = [
     {
         path:'/',
-        name:'home',
+        name:'root',
         component:defaultLot,
         redirect:'/home',
         children:[
@@ -40,18 +43,31 @@ const invoiceRoutes = [
                 path:'home',
                 name:'home',
                 component:Home
-               
             },
             {
-                path:'invoiceList',
-                name:'invoiceList',
-                component:InvoiceList,
+                path:'/invoice',
+                name:'invoice',
+                component:Invoice,
+                redirect:'/invoiceList',
                 children:[
                     {
-                        path:'invoiceDetail',
-                        name:'invoiceDetail',
-                        component:InvoiceDetail
-                    }
+                        // path:'',
+                        path:'invoiceList',
+                        name:'invoiceList',
+                        component:InvoiceList,
+                        children:[
+                            {
+                                path:'invoiceDetail',
+                                name:'invoiceDetail',
+                                component:InvoiceDetail
+                            }
+                        ]
+                    },
+                    // {
+                    //     path:'invoiceDetail',
+                    //     name:'invoiceDetail',
+                    //     component:InvoiceDetail
+                    // }
                 ]
             },
             {
@@ -66,16 +82,12 @@ const invoiceRoutes = [
 
 const allRoutes = [...loginRoutes, ...invoiceRoutes];
 
-// const createRouter = () => {
-//     const routers = [...allRoutes]
-//     return new VueRouter({
-//       scrollBehavior: () => ({ y: 0 }),
-//       routes: routers
-//     })
-//   }
   
-//创建一个路由器
+//  --3.-- 创建一个路由器实例 （机场）
 const router = new VueRouter({
+    //路由器工作模式（默认是 hash）
+    mode:'hash',
+    //  --4.-- 对路由实例设置 映射配置（航线）是一个对象
     routes:allRoutes
 });
 
