@@ -1,8 +1,8 @@
 <!--
  * @Author: Nxf
  * @Date: 2022-04-05 18:42:09
- * @LastEditors: Nxf
- * @LastEditTime: 2022-04-08 23:52:42
+ * @LastEditors: Nn
+ * @LastEditTime: 2022-04-09 17:39:03
  * @Descripttion: Default Layout
  11111
  1`1111
@@ -14,7 +14,7 @@
   <div id="components-layout-demo-basic">
     <a-layout>
       <!-- 页头 -->
-      <a-layout-header>智力竞技比赛平台</a-layout-header>
+      <a-layout-header>智力竞技综合管理平台</a-layout-header>
       <a-layout>
         <!-- 选择菜单 -->
         <a-layout-sider>

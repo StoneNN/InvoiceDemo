@@ -1,15 +1,35 @@
 <!--
  * @Author: Nxf
  * @Date: 2022-04-05 00:39:14
- * @LastEditors: Nxf
- * @LastEditTime: 2022-04-09 02:23:33
+ * @LastEditors: Nn
+ * @LastEditTime: 2022-04-09 17:34:40
  * @Descripttion: 
 -->
 
 <template>
+  <div id="root">
+    <a-button type="primary">
+      批量删除
+    </a-button>
+    
+    <a-button type="primary">
+      新建比赛
+    </a-button>
+    <a-button type="primary">
+      重置
+    </a-button>
+    
+    <a-input-search
+      placeholder="请输入发票号码"
+      enter-button="搜索"
+      size="default"
+      style="width:40%;"
+      @search="onSearch"
+    />
     <a-table
         :columns="columns" 
         :data-source="data"
+        :row-selection="rowSelection"
         :row-key="record => record.id" 
     >
         <!-- <template slot="id" slot-scope="text">
@@ -25,22 +45,25 @@
                         invoiceInfo:record
                     }
                 }"
+                @click.native="saveId(record.id)"
             >
             <!-- <router-link :to="{name:'invoiceDetail'}" > -->
             <!-- <router-link to="/invoiceList/invoiceDetail" > -->
                 详情
             </router-link>
             <a-divider type="vertical" />
-            <a>删除</a>
+            <a @click.prevent = "deleteAlert(record.id)">删除</a>
         </template>
     </a-table>
+  </div>
 </template>
 <script>
   import Vue from "vue";
-  import { Table, Icon, Divider, Button} from "ant-design-vue";
+  import { Table, Icon, Divider, Button, Input} from "ant-design-vue";
   import 'ant-design-vue/dist/antd.css';
-  
-  Vue.use(Table).use(Icon).use(Divider).use(Button);
+  import jsonData from '../../../public/data.json';
+
+  Vue.use(Table).use(Icon).use(Divider).use(Button).use(Input);
 
     const columns = [
         {
@@ -111,7 +134,7 @@
             totalBig:'玖万玖仟零肆拾叁',
             payee:'赵六',
             review:'王玖',
-            frawer:'刘梅',
+            drawer:'刘梅',
             content:[
                 {
                     id:'001',
@@ -161,7 +184,7 @@
             totalBig:'肆仟叁佰伍拾玖',
             payee:'孙强',
             review:'王九河',
-            frawer:'李娜',
+            drawer:'李娜',
             content:[
                 {
                     id:'001',
@@ -211,7 +234,7 @@
             totalBig:'叁拾陆万伍仟零壹拾玖',
             payee:'陈峰峰',
             review:'杨过',
-            frawer:'杨坤',
+            drawer:'杨坤',
             content:[
                 {
                     id:'001',
@@ -240,19 +263,64 @@
         },
     ];
 
+    const rowSelection = {
+        onChange: (selectedRowKeys, selectedRows) => {
+            console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+        },
+        onSelect: (record, selected, selectedRows) => {
+            console.log(record, selected, selectedRows);
+        },
+        onSelectAll: (selected, selectedRows, changeRows) => {
+            console.log(selected, selectedRows, changeRows);
+        },
+    };
     export default {
         name:"InvoiceListCpnt",
         data() {
             return {
-                data,
+                data:jsonData,
                 columns,
+                rowSelection,
             };
         },
+        methods:{
+            deleteAlert(id){
+                if (confirm("确定删除吗？")) {
+					console.log('-- 确定删除吗？ --',id);
+					this.deleteOne(id);
+				}
+            },
+            deleteOne(v){
+                console.log('-- 删除 --',v);
+            },
+            saveId(v){
+                console.log('-- saveId --',v);
+                localStorage.setItem('invoiceId',v);
+            },
+            onSearch(value) {
+                console.log(value);
+            },
+        },
+        mounted(){
+            console.log('接受list数据',jsonData);
+        }
+
     }
 </script>
 <style lang='less' scoped>
     /deep/.ant-table {
         background-color: white;
         margin: 10px 20px
+    }
+    #root > .ant-btn {
+        float: right;
+        margin-right: 20px;
+        margin-bottom: 10px;
+        margin-top: 10px;
+    }
+    #root > .ant-input-search {
+        float: right;
+        margin-right: 10px;
+        margin-top: 10px;
     }
 </style>

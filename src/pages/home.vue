@@ -2,7 +2,7 @@
  * @Author: Nn
  * @Date: 2022-04-06 17:34:31
  * @LastEditors: Nn
- * @LastEditTime: 2022-04-08 11:00:15
+ * @LastEditTime: 2022-04-09 16:51:26
  * @Description: 
 -->
 
@@ -96,6 +96,7 @@
     ];
 
     export default {
+        name:"HomeCpnt",
         data() {
             return {
                 data,

@@ -1,82 +1,91 @@
 <!--
  * @Author: Nxf
  * @Date: 2022-04-05 01:58:19
- * @LastEditors: Nxf
- * @LastEditTime: 2022-04-09 02:25:41
- * @Descripttion: 
+ * @LastEditors: Nn
+ * @LastEditTime: 2022-04-09 16:59:31
+ * @Descripttion: InvoiceDetailCpnt
 -->
 <template>
   <div>
     <a-descriptions title="发票详情" bordered>
       <a-descriptions-item label="发票号码">
-        {{ $route.query.invoiceInfo.id }}
+        {{ invoiceData.id }}
       </a-descriptions-item>
       <a-descriptions-item label="发票代码">
-        {{ $route.query.invoiceInfo.code }}
+        {{ invoiceData.code }}
       </a-descriptions-item>
       <a-descriptions-item label="机器编码">
-        {{ $route.query.invoiceInfo.machineId }}
+        {{ invoiceData.machineId }}
       </a-descriptions-item>
       <a-descriptions-item label="开票日期">
-        {{ $route.query.invoiceInfo.id }}
+        {{ invoiceData.date }}
       </a-descriptions-item>
       <a-descriptions-item label="校验码" :span="2">
-        {{ $route.query.invoiceInfo.checkCode }}
+        {{ invoiceData.checkCode }}
       </a-descriptions-item>
       <a-descriptions-item label="密码区" :span="3">
-        {{ $route.query.invoiceInfo.passCode }}
+        {{ invoiceData.passCode }}
       </a-descriptions-item>
       <a-descriptions-item label="购买方" :span="3" style="height: 'left '">
-        <h3>名称:</h3>
-        {{ $route.query.invoiceInfo.buyer }}
+        <h4>名称:</h4>
+        {{ invoiceData.buyer }}
         <br />
-        <h3>纳税人识别号:</h3>
-        {{ $route.query.invoiceInfo.buyerId }}
+        <h4>纳税人识别号:</h4>
+        {{ invoiceData.buyerId }}
         <br />
-        <h3>地址:</h3>
-        {{ $route.query.invoiceInfo.bAddress }}
+        <h4>地址:</h4>
+        {{ invoiceData.bAddress }}
         <br />
-        <h3>电话:</h3>
-        {{ $route.query.invoiceInfo.bPhone }}
+        <h4>电话:</h4>
+        {{ invoiceData.bPhone }}
         <br />
-        <h3>开户行:</h3>
-        {{ $route.query.invoiceInfo.bBank }}
+        <h4>开户行:</h4>
+        {{ invoiceData.bBank }}
         <br />
-        <h3>开户行账号:</h3>
-        {{ $route.query.invoiceInfo.bBankCode }}
+        <h4>开户行账号:</h4>
+        {{ invoiceData.bBankCode }}
         <br />
       </a-descriptions-item>
       <a-descriptions-item label="销售方" :span="3">
-        <h3>名称:</h3>
-        {{ $route.query.invoiceInfo.seller }}
+        <h4>名称:</h4>
+        {{ invoiceData.seller }}
         <br />
-        <h3>纳税人识别号:</h3>
-        {{ $route.query.invoiceInfo.sellerId }}
+        <h4>纳税人识别号:</h4>
+        {{ invoiceData.sellerId }}
         <br />
-        <h3>地址:</h3>
-        {{ $route.query.invoiceInfo.sAddress }}
+        <h4>地址:</h4>
+        {{ invoiceData.sAddress }}
         <br />
-        <h3>电话:</h3>
-        {{ $route.query.invoiceInfo.sPhone }}
+        <h4>电话:</h4>
+        {{ invoiceData.sPhone }}
         <br />
-        <h3>开户行:</h3>
-        {{ $route.query.invoiceInfo.sBank }}
+        <h4>开户行:</h4>
+        {{ invoiceData.sBank }}
         <br />
-        <h3>开户行账号:</h3>
-        {{ $route.query.invoiceInfo.sBankCode }}
+        <h4>开户行账号:</h4>
+        {{ invoiceData.sBankCode }}
         <br />
+      </a-descriptions-item>
+      <a-descriptions-item label="收款人">
+        {{ invoiceData.payee }}
+      </a-descriptions-item>
+      <a-descriptions-item label="复核">
+        {{ invoiceData.review }}
+      </a-descriptions-item>
+      <a-descriptions-item label="开票人">
+        {{ invoiceData.drawer }}
       </a-descriptions-item>
       <a-descriptions-item label="价税合计">
-        ￥{{ $route.query.invoiceInfo.total }}
+        ￥{{ invoiceData.total }}
       </a-descriptions-item>
-      <a-descriptions-item label="大写">
-        {{ $route.query.invoiceInfo.totalBig }}
+      <a-descriptions-item label="大写" >
+        {{ invoiceData.totalBig }}
       </a-descriptions-item>
     </a-descriptions>
-    <h3>订单详情</h3>
+    <div style="margin-top:'60px; color:red; height:'60px'">订单详情</div>
     <a-table
         :columns="columns" 
-        :data-source= "data"
+        :data-source= "contentDatas"
         :row-key="record => record.id" 
         bordered
     >   
@@ -88,9 +97,13 @@
 <script>
 import Vue from "vue";
 import { Table, Descriptions, Divider, Button } from "ant-design-vue";
+import axios from 'axios';
 import "ant-design-vue/dist/antd.css";
+import jsonData from '../../../public/data.json';
+
 
 Vue.use(Table).use(Descriptions).use(Divider).use(Button);
+
 const columns = [
         
         {
@@ -158,23 +171,56 @@ export default {
   data() {
     return {
         columns,
-        data:this.$route.query.invoiceInfo.content,
+        contentDatas:[],
+        invoiceData:{}
     };
   },
   mounted() {
-    console.log("--- list传值 ---", this.$route.query.invoiceInfo);
+    this.getData();
   },
+  methods:{
+    getData(){
+        // axios.get('../../../public/data.json').then(
+        //     response => {
+        //       console.log('请求成功了',response.data)
+        //     },
+        //     error => {
+        //       console.log('请求失败了',error.message)
+        //     }
+				// )
+        console.log('-------=-===',jsonData);
+        const  oneData = jsonData.filter((obj)=>{
+
+          return obj.id == localStorage.getItem('invoiceId')
+        });
+
+        this.invoiceData = oneData[0];
+        this.contentDatas = oneData[0].content;
+    }
+  }
 };
 </script>
 <style  lang='less' scoped>
     /deep/.ant-descriptions {
     margin: 40px 20px 0px 20px;
     }
-    h3 {
-    display: inline-block;
-    }
     /deep/.ant-table {
         background-color: white;
-        margin: 0px 20px
+        margin: 0px 20px;
+    }
+    /deep/.ant-descriptions-item-content {
+      padding: 5px 0px 2px 10px;
+      text-align: left;
+      h4{
+        display: inline-block;
+        font-weight: bolder;
+        // background-color: red;
+      }
+    }
+    /deep/.ant-descriptions-item-label{
+      // background-color: cyan;
+      padding: 5px;
+      font-size: 15px;
+      font-weight: bolder;
     }
 </style>
