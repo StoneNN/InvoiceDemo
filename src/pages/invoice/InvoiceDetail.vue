@@ -1,8 +1,8 @@
 <!--
  * @Author: Nxf
  * @Date: 2022-04-05 01:58:19
- * @LastEditors: Nn
- * @LastEditTime: 2022-04-09 16:59:31
+ * @LastEditors: Nxf
+ * @LastEditTime: 2022-04-09 21:50:56
  * @Descripttion: InvoiceDetailCpnt
 -->
 <template>
@@ -97,7 +97,7 @@
 <script>
 import Vue from "vue";
 import { Table, Descriptions, Divider, Button } from "ant-design-vue";
-import axios from 'axios';
+// import axios from 'axios';
 import "ant-design-vue/dist/antd.css";
 import jsonData from '../../../public/data.json';
 

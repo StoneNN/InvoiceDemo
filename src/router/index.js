@@ -2,7 +2,7 @@
  * @Author: Nxf
  * @Date: 2022-04-05 01:00:19
  * @LastEditors: Nxf
- * @LastEditTime: 2022-04-08 23:17:11
+ * @LastEditTime: 2022-04-09 21:55:04
  * @Descripttion: 整个应用的路由器
  */
 
@@ -46,7 +46,6 @@ const invoiceRoutes = [
             },
             {
                 path:'/invoiceList',
-                name:'invoice',
                 component:Invoice,
                 children:[
                     {

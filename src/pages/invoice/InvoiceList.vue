@@ -1,19 +1,20 @@
 <!--
  * @Author: Nxf
  * @Date: 2022-04-05 00:39:14
- * @LastEditors: Nn
- * @LastEditTime: 2022-04-09 17:34:40
+ * @LastEditors: Nxf
+ * @LastEditTime: 2022-04-10 18:07:05
  * @Descripttion: 
 -->
 
 <template>
   <div id="root">
+      <!-- <span>999</span> -->
     <a-button type="primary">
       批量删除
     </a-button>
     
     <a-button type="primary">
-      新建比赛
+      新建发票
     </a-button>
     <a-button type="primary">
       重置
@@ -109,160 +110,6 @@
         },
     ];
 
-    const data = [
-        {
-            id: '125379',
-            machineId: '1794126',
-            code:'011002100111',
-            date: '2022-05-09',
-            checkCode:'56183 92206 00401 10881',
-            passCode:'-20/679*69--/>6565464616546+603-*<4613++516-20/679*69--/>6565464616546+603-*<4613++516',
-            seller: '中国李宁服饰有限公司',
-            sellerId: '16546531654968146861353',
-            sAddress:'北京市朝阳区广安大街110号',
-            sPhone:'17331604100',
-            sBank:'中国银行北京海淀区支行',
-            sBankCode:'1102359645877456123589',
-            buyer: '张三',
-            buyerId: '134566531654968146861353',
-            bAddress:'河北省石家庄市裕华区中山路69号',
-            bPhone:'17331604100',
-            bBank:'中国银行北京海淀区支行',
-            bBankCode:'1102359645877456123589',
-            
-            total: '99,043',
-            totalBig:'玖万玖仟零肆拾叁',
-            payee:'赵六',
-            review:'王玖',
-            drawer:'刘梅',
-            content:[
-                {
-                    id:'001',
-                    contentName:'蒙牛无菌枕纯牛奶',
-                    style:'一箱24盒',
-                    unit:'箱',
-                    quantity:'200', 
-                    unitPrice:'45',
-                    totalPrice:'9000',
-                    taxRate:'13%',
-                    tax:'1170'
-                },
-                {
-                    id:'002',
-                    contentName:'蒙牛特仑苏纯牛奶',
-                    style:'一箱12盒',
-                    unit:'箱',
-                    quantity:'100', 
-                    unitPrice:'65',
-                    totalPrice:'6500',
-                    taxRate:'13%',
-                    tax:'845'
-                }
-            ],
-            marks:'送到指定地点，到货前提前打电话联系。'
-        },
-        {
-            id: '532957',
-            machineId: '6594126',
-            code:'011002100111',
-            date: '2021-11-22',
-            checkCode:'56183 92206 00401 10881',
-            passCode:'-20/679*69--/>6565464616546+603-*<4613++516-20/679*69--/>6565464616546+603-*<4613++516',
-            seller: '石家庄网通科技有限公司',
-            sellerId: '16546531654968146861353',
-            sAddress:'北京市朝阳区广安大街110号',
-            sPhone:'17331604100',
-            sBank:'中国银行北京海淀区支行',
-            sBankCode:'1102359645877456123589',
-            buyer: '王五',
-            buyerId: '23315531654968146861353',
-            bAddress:'河北省石家庄市裕华区中山路69号',
-            bPhone:'17331604100',
-            bBank:'中国银行北京海淀区支行',
-            bBankCode:'1102359645877456123589',
-            total: '4,359',
-            totalBig:'肆仟叁佰伍拾玖',
-            payee:'孙强',
-            review:'王九河',
-            drawer:'李娜',
-            content:[
-                {
-                    id:'001',
-                    contentName:'蒙牛无菌枕纯牛奶',
-                    style:'一箱24盒',
-                    unit:'箱',
-                    quantity:'200', 
-                    unitPrice:'45',
-                    totalPrice:'9000',
-                    taxRate:'13%',
-                    tax:'1170'
-                },
-                {
-                    id:'002',
-                    contentName:'蒙牛特仑苏纯牛奶',
-                    style:'一箱12盒',
-                    unit:'箱',
-                    quantity:'100', 
-                    unitPrice:'65',
-                    totalPrice:'6500',
-                    taxRate:'13%',
-                    tax:'845'
-                }
-            ],
-            marks:'送到指定地点，到货前提前打电话联系。'
-        },
-        {
-            id: '538479',
-            machineId: '3814126',
-            code:'011002100111',
-            date: '2022-01-23',
-            checkCode:'56183 92206 00401 10881',
-            passCode:'-20/679*69--/>6565464616546+603-*<4613++516-20/679*69--/>6565464616546+603-*<4613++516',
-            seller: '河北交投股份有限公司',
-            sellerId: '16546531654968146861353',
-            sAddress:'北京市朝阳区广安大街110号',
-            sPhone:'17331604100',
-            sBank:'中国银行北京海淀区支行',
-            sBankCode:'1102359645877456123589',
-            buyer: '李四',
-            buyerId: '16546531654968146861353',
-            bAddress:'河北省石家庄市裕华区中山路69号',
-            bPhone:'17331604100',
-            bBank:'中国银行北京海淀区支行',
-            bBankCode:'1102359645877456123589',
-            total: '365019',
-            totalBig:'叁拾陆万伍仟零壹拾玖',
-            payee:'陈峰峰',
-            review:'杨过',
-            drawer:'杨坤',
-            content:[
-                {
-                    id:'001',
-                    contentName:'蒙牛无菌枕纯牛奶',
-                    style:'一箱24盒',
-                    unit:'箱',
-                    quantity:'200', 
-                    unitPrice:'45',
-                    totalPrice:'9000',
-                    taxRate:'13%',
-                    tax:'1170'
-                },
-                {
-                    id:'002',
-                    contentName:'蒙牛特仑苏纯牛奶',
-                    style:'一箱12盒',
-                    unit:'箱',
-                    quantity:'100', 
-                    unitPrice:'65',
-                    totalPrice:'6500',
-                    taxRate:'13%',
-                    tax:'845'
-                }
-            ],
-            marks:'送到指定地点，到货前提前打电话联系。'
-        },
-    ];
-
     const rowSelection = {
         onChange: (selectedRowKeys, selectedRows) => {
             console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
@@ -313,13 +160,13 @@
         margin: 10px 20px
     }
     #root > .ant-btn {
-        float: right;
+        // float: right;
         margin-right: 20px;
         margin-bottom: 10px;
         margin-top: 10px;
     }
     #root > .ant-input-search {
-        float: right;
+        // float: right;
         margin-right: 10px;
         margin-top: 10px;
     }
