@@ -1,8 +1,8 @@
 /*
  * @Author: Nxf
  * @Date: 2022-04-05 01:00:19
- * @LastEditors: Nxf
- * @LastEditTime: 2022-04-09 21:55:04
+ * @LastEditors: Nn
+ * @LastEditTime: 2022-04-11 16:18:24
  * @Descripttion: 整个应用的路由器
  */
 
@@ -17,8 +17,8 @@ import defaultLot from '../layouts/default.vue';
 //引入组件
 import Home from '../pages/home.vue';
 import Invoice from '@/pages/invoice/index.vue';
-import InvoiceList from '../pages/invoice/InvoiceList.vue';
-import InvoiceDetail from '../pages/invoice/InvoiceDetail.vue';
+import InvoiceList from '../pages/invoice/infos/InvoiceList.vue';
+import InvoiceDetail from '../pages/invoice/infos/InvoiceDetail.vue';
 import User from '../pages/User.vue';
 //  --2.--注入VueRouter插件
 Vue.use(VueRouter);
@@ -42,28 +42,25 @@ const invoiceRoutes = [
             {
                 path:'home',
                 name:'home',
+                meta:{title:'首页'},
                 component:Home
             },
             {
-                path:'/invoiceList',
+                path:'/invoice',
                 component:Invoice,
+                redirect: '/invoice/invoiceList',
                 children:[
                     {
-                        path:'',
-                        // path:'invoiceList',
+                        // path:'',
+                        path:'invoiceList',
                         name:'invoiceList',
+                        meta:{title:'发票列表'},
                         component:InvoiceList,
-                        // children:[
-                        //     {
-                        //         path:'invoiceDetail',
-                        //         name:'invoiceDetail',
-                        //         component:InvoiceDetail
-                        //     }
-                        // ]
                     },
                     {
                         path:'invoiceDetail',
                         name:'invoiceDetail',
+                        meta:{title:'发票详情'},
                         component:InvoiceDetail
                     }
                 ]
@@ -71,6 +68,7 @@ const invoiceRoutes = [
             {
                 path:'user',
                 name:'user',
+                meta:{title:'普通用户'},
                 component:User
             },
         
@@ -98,6 +96,11 @@ router.beforeEach((to,from,next)=>{
 //全局后置路由守卫 ---- 初始化的时候被调用；每次路由切换之后被调用（没有 next 参数）
 router.afterEach((to,from)=>{
     console.log("afterEach ---> to,from",to, from);
+    if(to.meta.title){ 
+        document.title = to.meta.title //修改网页的title
+    }else{
+        document.title = '智力竞技综合管理平台'
+    }
 })
 
 export default router;

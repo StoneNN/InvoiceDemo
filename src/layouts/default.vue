@@ -2,14 +2,11 @@
  * @Author: Nxf
  * @Date: 2022-04-05 18:42:09
  * @LastEditors: Nn
- * @LastEditTime: 2022-04-09 17:39:03
+ * @LastEditTime: 2022-04-11 16:18:10
  * @Descripttion: Default Layout
- 11111
- 1`1111
- 222222
- 333333
-
 -->
+
+
 <template>
   <div id="components-layout-demo-basic">
     <a-layout>
@@ -28,7 +25,7 @@
             @click="menuClick"
           >
             <!-- 菜单遍历的开始 -->
-            <template v-for="item in list">
+            <template v-for="item in menuList">
               <!-- 如果当前遍历项没有children，视为子菜单项，注意所有的key都是path用于路由跳转，以及当前选中记录 -->
               <a-menu-item v-if="!item.children" :key="item.path">
                 <a-icon :type="item.icon" />
@@ -100,7 +97,7 @@ export default {
       // 选中的子菜单项
       defaultSelectedKeys: [this.$route.path], 
       // 菜单信息，可从后台获取
-      list: [
+      menuList: [
         {
           key: '1',
           title: '首页',
@@ -116,7 +113,7 @@ export default {
             {
               key: '3',
               title: '发票',
-              path: '/invoiceList',
+              path: '/invoice',
               icon:'-',
             },
           ],

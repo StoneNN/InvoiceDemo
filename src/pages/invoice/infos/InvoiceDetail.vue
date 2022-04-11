@@ -1,8 +1,8 @@
 <!--
  * @Author: Nxf
  * @Date: 2022-04-05 01:58:19
- * @LastEditors: Nxf
- * @LastEditTime: 2022-04-09 21:50:56
+ * @LastEditors: Nn
+ * @LastEditTime: 2022-04-11 14:34:11
  * @Descripttion: InvoiceDetailCpnt
 -->
 <template>
@@ -26,7 +26,7 @@
       <a-descriptions-item label="密码区" :span="3">
         {{ invoiceData.passCode }}
       </a-descriptions-item>
-      <a-descriptions-item label="购买方" :span="3" style="height: 'left '">
+      <a-descriptions-item label="购买方" :span="3">
         <h4>名称:</h4>
         {{ invoiceData.buyer }}
         <br />
@@ -99,7 +99,7 @@ import Vue from "vue";
 import { Table, Descriptions, Divider, Button } from "ant-design-vue";
 // import axios from 'axios';
 import "ant-design-vue/dist/antd.css";
-import jsonData from '../../../public/data.json';
+import jsonData from '../../../../public/data.json';
 
 
 Vue.use(Table).use(Descriptions).use(Divider).use(Button);

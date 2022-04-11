@@ -1,8 +1,8 @@
 <!--
  * @Author: Nxf
  * @Date: 2022-04-05 00:39:14
- * @LastEditors: Nxf
- * @LastEditTime: 2022-04-10 18:07:05
+ * @LastEditors: Nn
+ * @LastEditTime: 2022-04-11 16:21:13
  * @Descripttion: 
 -->
 
@@ -41,7 +41,7 @@
         <template slot="action" slot-scope="text,record">
             <router-link 
                 :to="{
-                    path:'/invoiceList/invoiceDetail',
+                    path:'/invoice/invoiceList/invoiceDetail',
                     query:{
                         invoiceInfo:record
                     }
@@ -62,7 +62,7 @@
   import Vue from "vue";
   import { Table, Icon, Divider, Button, Input} from "ant-design-vue";
   import 'ant-design-vue/dist/antd.css';
-  import jsonData from '../../../public/data.json';
+  import jsonData from '../../../../public/data.json';
 
   Vue.use(Table).use(Icon).use(Divider).use(Button).use(Input);
 
