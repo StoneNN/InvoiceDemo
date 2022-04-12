@@ -1,8 +1,8 @@
 /*
  * @Author: Nxf
  * @Date: 2022-04-05 01:00:19
- * @LastEditors: Nn
- * @LastEditTime: 2022-04-11 16:18:24
+ * @LastEditors: Nxf
+ * @LastEditTime: 2022-04-12 13:02:14
  * @Descripttion: 整个应用的路由器
  */
 
@@ -16,9 +16,12 @@ import defaultLot from '../layouts/default.vue';
 
 //引入组件
 import Home from '../pages/home.vue';
-import Invoice from '@/pages/invoice/index.vue';
-import InvoiceList from '../pages/invoice/infos/InvoiceList.vue';
-import InvoiceDetail from '../pages/invoice/infos/InvoiceDetail.vue';
+import OrderList from '@/pages/bills/orders/orderList.vue';
+import OrderDetail from '@/pages/bills/orders/orderDetail.vue';
+import InvoiceList from '../pages/bills/invoices/InvoiceList.vue';
+import InvoiceDetail from '../pages/bills/invoices/InvoiceDetail.vue';
+import RulesList from '@/pages/bills/rules/rulesList.vue';
+import RulesDetail from '@/pages/bills/rules/rulesDetail.vue';
 import User from '../pages/User.vue';
 //  --2.--注入VueRouter插件
 Vue.use(VueRouter);
@@ -46,13 +49,12 @@ const invoiceRoutes = [
                 component:Home
             },
             {
-                path:'/invoice',
-                component:Invoice,
-                redirect: '/invoice/invoiceList',
+                path:'/invoiceList',
+                component:{render(c) { return c('router-view') }},
                 children:[
                     {
                         // path:'',
-                        path:'invoiceList',
+                        path:'/invoiceList',
                         name:'invoiceList',
                         meta:{title:'发票列表'},
                         component:InvoiceList,
@@ -62,7 +64,43 @@ const invoiceRoutes = [
                         name:'invoiceDetail',
                         meta:{title:'发票详情'},
                         component:InvoiceDetail
-                    }
+                    },
+                ]
+            },
+            {
+                path:'/rulesList',
+                component:{render(c) { return c('router-view') }},
+                children:[
+                    {
+                        path:'/rulesList',
+                        name:'rulesList',
+                        meta:{title:'规则列表'},
+                        component:RulesList,
+                    },
+                    {
+                        path:'rulesDetail',
+                        name:'rulesDetail',
+                        meta:{title:'规则详情'},
+                        component:RulesDetail
+                    },
+                ]
+            },
+            {
+                path:'/orderList',
+                component:{render(c) { return c('router-view') }},
+                children:[
+                    {
+                        path:'/orderList',
+                        name:'orderList',
+                        meta:{title:'订单列表'},
+                        component:OrderList,
+                    },
+                    {
+                        path:'orderDetail',
+                        name:'orderDetail',
+                        meta:{title:'规则详情'},
+                        component:OrderDetail
+                    },
                 ]
             },
             {

@@ -1,8 +1,8 @@
 <!--
  * @Author: Nxf
- * @Date: 2022-04-05 00:39:14
- * @LastEditors: Nn
- * @LastEditTime: 2022-04-11 16:21:13
+ * @Date: 2022-04-11 20:28:06
+ * @LastEditors: Nxf
+ * @LastEditTime: 2022-04-12 03:22:33
  * @Descripttion: 
 -->
 
@@ -14,14 +14,14 @@
     </a-button>
     
     <a-button type="primary">
-      新建发票
+      新建规则
     </a-button>
     <a-button type="primary">
       重置
     </a-button>
     
     <a-input-search
-      placeholder="请输入发票号码"
+      placeholder="请输入规则编号"
       enter-button="搜索"
       size="default"
       style="width:40%;"
@@ -33,23 +33,18 @@
         :row-selection="rowSelection"
         :row-key="record => record.id" 
     >
-        <!-- <template slot="id" slot-scope="text">
-            <span >{{ text }}</span>
-        </template> -->
-        <a slot="id" slot-scope="text">{{text}}</a>
+        <a slot="rulesCode" slot-scope="text">{{text}}</a>
         <span slot="total" slot-scope="text">￥{{text}}</span>
         <template slot="action" slot-scope="text,record">
             <router-link 
                 :to="{
-                    path:'/invoice/invoiceList/invoiceDetail',
+                    path:'rulesList/rulesDetail',
                     query:{
-                        invoiceInfo:record
+                        rulesId:record.id
                     }
                 }"
                 @click.native="saveId(record.id)"
             >
-            <!-- <router-link :to="{name:'invoiceDetail'}" > -->
-            <!-- <router-link to="/invoiceList/invoiceDetail" > -->
                 详情
             </router-link>
             <a-divider type="vertical" />
@@ -62,18 +57,32 @@
   import Vue from "vue";
   import { Table, Icon, Divider, Button, Input} from "ant-design-vue";
   import 'ant-design-vue/dist/antd.css';
-  import jsonData from '../../../../public/data.json';
+  import jsonData from '@/assets/rulesData.json';
 
   Vue.use(Table).use(Icon).use(Divider).use(Button).use(Input);
 
     const columns = [
         {
-            title: '发票号码',
-            dataIndex:'id',
-            key: 'invoiceId',
+            title: '规则编号',
+            dataIndex:'rulesCode',
+            key: 'rulesCode',
             align:'center',
-            slots: { title: 'invoiceId' },
-            scopedSlots: { customRender: 'id' },
+            slots: { title: 'rulesCode' },
+            scopedSlots: { customRender: 'rulesCode' },
+        },
+        {
+            title: '订单编号',
+            dataIndex:'orderCode',
+            key: 'orderCode',
+            align:'center',
+        },
+        {
+            title: '商品名称',
+            dataIndex:'goodsName',
+            key: 'goodsName',
+            align:'center',
+            width:'15%'
+
         },
         {
             title: '日期',
@@ -92,13 +101,6 @@
             dataIndex: 'buyer',
             key: 'buyer',
             align:'center',
-        },
-        {
-            title: '总金额',
-            dataIndex:'total',
-            key: 'total',
-            align:'center',
-            scopedSlots:{ customRender: 'total' }
         },
         {
             title: '操作',
@@ -142,7 +144,7 @@
             },
             saveId(v){
                 console.log('-- saveId --',v);
-                localStorage.setItem('invoiceId',v);
+                localStorage.setItem('rulesId',v);
             },
             onSearch(value) {
                 console.log(value);
@@ -160,13 +162,13 @@
         margin: 10px 20px
     }
     #root > .ant-btn {
-        // float: right;
+        float: right;
         margin-right: 20px;
         margin-bottom: 10px;
         margin-top: 10px;
     }
     #root > .ant-input-search {
-        // float: right;
+        float: right;
         margin-right: 10px;
         margin-top: 10px;
     }

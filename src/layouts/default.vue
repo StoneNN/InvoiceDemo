@@ -1,8 +1,8 @@
 <!--
  * @Author: Nxf
  * @Date: 2022-04-05 18:42:09
- * @LastEditors: Nn
- * @LastEditTime: 2022-04-11 16:18:10
+ * @LastEditors: Nxf
+ * @LastEditTime: 2022-04-12 13:03:02
  * @Descripttion: Default Layout
 -->
 
@@ -11,7 +11,23 @@
   <div id="components-layout-demo-basic">
     <a-layout>
       <!-- 页头 -->
-      <a-layout-header>智力竞技综合管理平台</a-layout-header>
+      <a-layout-header>
+        <span>智力竞技综合管理系统</span>
+        <a-dropdown>
+          <a class="ant-dropdown-link">
+            你好，用户001
+            <a-icon type="down" />
+          </a>
+          <a-menu slot="overlay">
+            <a-menu-item>
+              <a>用户信息</a>
+            </a-menu-item>
+            <a-menu-item>
+              <a>退出登录</a>
+            </a-menu-item>
+          </a-menu>
+        </a-dropdown>  
+      </a-layout-header>
       <a-layout>
         <!-- 选择菜单 -->
         <a-layout-sider>
@@ -49,10 +65,10 @@
 
 <script>
   import Vue from "vue";
-  import { Layout, Table, Icon, Menu} from "ant-design-vue";
+  import { Layout, Table, Icon, Menu, Dropdown} from "ant-design-vue";
   import 'ant-design-vue/dist/antd.css';
   
-  Vue.use(Layout).use(Table).use(Icon).use(Menu);
+  Vue.use(Layout).use(Table).use(Icon).use(Menu).use(Dropdown);
   
 // 定义函数式组件
 const SubMenu = {
@@ -99,21 +115,33 @@ export default {
       // 菜单信息，可从后台获取
       menuList: [
         {
-          key: '1',
+          key: '首页',
           title: '首页',
           path: '/home',
           icon:'home'
         },
         {
-          key: '2',
+          key: '财务信息',
           title: '财务信息',
           path: '',
           icon:'account-book',
           children: [
             {
-              key: '3',
+              key: '订单',
+              title: '订单',
+              path: '/orderList',
+              icon:'-',
+            },
+            {
+              key: '规则',
+              title: '规则',
+              path: '/rulesList',
+              icon:'-',
+            },
+            {
+              key: '发票',
               title: '发票',
-              path: '/invoice',
+              path: '/invoiceList',
               icon:'-',
             },
           ],
@@ -189,15 +217,18 @@ export default {
   }
   #components-layout-demo-basic .ant-layout-header,
   #components-layout-demo-basic .ant-layout-footer {
-    background: #7dbcea;
+    background: #007acc;;
     color: #fff;
     padding: 0;
   }
   #components-layout-demo-basic .ant-layout-header {
     height: 15vh;
     line-height: 15vh;
-    font-size: 50px;
-    font-weight: bolder;
+    position: relative;
+  }
+  #components-layout-demo-basic .ant-layout-header span {
+      font-size: 50px;
+      font-weight: bolder;
   }
   #components-layout-demo-basic .ant-layout-footer {
     height: 10vh;
@@ -218,5 +249,12 @@ export default {
   }
   #components-layout-demo-basic > .ant-layout:last-child {
     margin: 0;
+  }
+  .ant-dropdown-link {
+    height: 70px;
+    position:absolute;
+    right: 10px;
+    bottom: 10px;
+    color: white;
   }
 </style>

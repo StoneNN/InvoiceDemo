@@ -1,8 +1,8 @@
 /*
  * @Author: Nxf
  * @Date: 2022-04-05 00:23:43
- * @LastEditors: Nn
- * @LastEditTime: 2022-04-08 17:15:44
+ * @LastEditors: Nxf
+ * @LastEditTime: 2022-04-12 09:58:18
  * @Descripttion: 
  */
 import Vue from 'vue'
@@ -10,7 +10,7 @@ import App from './App.vue'
 // 引入VueRouter
 import VueRouter from 'vue-router'
 // 引入路由器
-import router from './router/index'
+import router from './router/index';
 // 引入antd
 // import Antd from 'ant-design-vue';
 // import 'ant-design-vue/dist/antd.css';

@@ -1,8 +1,8 @@
 <!--
  * @Author: Nxf
  * @Date: 2022-04-05 01:58:19
- * @LastEditors: Nn
- * @LastEditTime: 2022-04-11 14:34:11
+ * @LastEditors: Nxf
+ * @LastEditTime: 2022-04-12 07:31:15
  * @Descripttion: InvoiceDetailCpnt
 -->
 <template>
@@ -99,7 +99,7 @@ import Vue from "vue";
 import { Table, Descriptions, Divider, Button } from "ant-design-vue";
 // import axios from 'axios';
 import "ant-design-vue/dist/antd.css";
-import jsonData from '../../../../public/data.json';
+import jsonData from '@/assets/invoiceData.json';
 
 
 Vue.use(Table).use(Descriptions).use(Divider).use(Button);
@@ -180,7 +180,7 @@ export default {
   },
   methods:{
     getData(){
-        // axios.get('../../../public/data.json').then(
+        // axios.get('../../../public/invoiceData.json').then(
         //     response => {
         //       console.log('请求成功了',response.data)
         //     },
@@ -190,8 +190,8 @@ export default {
 				// )
         console.log('-------=-===',jsonData);
         const  oneData = jsonData.filter((obj)=>{
-
-          return obj.id == localStorage.getItem('invoiceId')
+          return obj.id == this.$route.query.invoiceId;
+          // return obj.id == localStorage.getItem('invoiceId')
         });
 
         this.invoiceData = oneData[0];

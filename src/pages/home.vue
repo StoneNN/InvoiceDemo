@@ -1,8 +1,8 @@
 <!--
  * @Author: Nn
  * @Date: 2022-04-06 17:34:31
- * @LastEditors: Nn
- * @LastEditTime: 2022-04-09 16:51:26
+ * @LastEditors: Nxf
+ * @LastEditTime: 2022-04-12 12:59:28
  * @Description: 
 -->
 
@@ -19,6 +19,7 @@
     
 </style>
 -->
+
 
 <template>
 <!-- 
@@ -40,6 +41,7 @@
         </span>
     </a-table>
 </template>
+
 <script>
     import Vue from "vue";
     import { Table, Icon, Divider, Tag} from "ant-design-vue";
