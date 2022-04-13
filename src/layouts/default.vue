@@ -1,8 +1,8 @@
 <!--
  * @Author: Nxf
  * @Date: 2022-04-05 18:42:09
- * @LastEditors: Nxf
- * @LastEditTime: 2022-04-12 13:03:02
+ * @LastEditors: Nn
+ * @LastEditTime: 2022-04-13 17:36:20
  * @Descripttion: Default Layout
 -->
 
@@ -54,6 +54,7 @@
         </a-layout-sider>
         <!-- 内容区 -->
         <a-layout-content>
+          <bread-crumb> </bread-crumb>
           <router-view ></router-view>
         </a-layout-content>
       </a-layout>
@@ -66,9 +67,11 @@
 <script>
   import Vue from "vue";
   import { Layout, Table, Icon, Menu, Dropdown} from "ant-design-vue";
+  import breadCrumb from "../components/breads.vue";
   import 'ant-design-vue/dist/antd.css';
   
   Vue.use(Layout).use(Table).use(Icon).use(Menu).use(Dropdown);
+  Vue.use(breadCrumb);
   
 // 定义函数式组件
 const SubMenu = {
@@ -99,7 +102,12 @@ const SubMenu = {
     },
   },
 };
+
 export default {
+  name:"defaultLayoutCpnt",
+  components:{
+    breadCrumb
+  },
   data() {
     return {
       // 菜单缩进
