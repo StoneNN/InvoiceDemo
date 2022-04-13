@@ -1,8 +1,8 @@
 <!--
  * @Author: Nxf
  * @Date: 2022-04-05 18:42:09
- * @LastEditors: Nn
- * @LastEditTime: 2022-04-13 17:36:20
+ * @LastEditors: Nxf
+ * @LastEditTime: 2022-04-13 21:06:52
  * @Descripttion: Default Layout
 -->
 
@@ -54,7 +54,7 @@
         </a-layout-sider>
         <!-- 内容区 -->
         <a-layout-content>
-          <bread-crumb> </bread-crumb>
+          <bread-crumb-router> </bread-crumb-router>
           <router-view ></router-view>
         </a-layout-content>
       </a-layout>
@@ -67,11 +67,11 @@
 <script>
   import Vue from "vue";
   import { Layout, Table, Icon, Menu, Dropdown} from "ant-design-vue";
-  import breadCrumb from "../components/breads.vue";
+  import breadCrumbRouter from "../components/breads.vue";
   import 'ant-design-vue/dist/antd.css';
   
   Vue.use(Layout).use(Table).use(Icon).use(Menu).use(Dropdown);
-  Vue.use(breadCrumb);
+  Vue.use(breadCrumbRouter);
   
 // 定义函数式组件
 const SubMenu = {
@@ -105,8 +105,10 @@ const SubMenu = {
 
 export default {
   name:"defaultLayoutCpnt",
+  // 注册局部组件
   components:{
-    breadCrumb
+    breadCrumbRouter,
+    'sub-menu': SubMenu,
   },
   data() {
     return {
@@ -149,7 +151,7 @@ export default {
             {
               key: '发票',
               title: '发票',
-              path: '/invoiceList',
+              path: '/invoice/invoiceList',
               icon:'-',
             },
           ],
@@ -211,10 +213,6 @@ export default {
         this.openKeys = latestOpenKey ? [latestOpenKey] : [];
       }
     },
-  },
-  // 注册局部组件
-  components: {
-    'sub-menu': SubMenu,
   },
 };
 </script>

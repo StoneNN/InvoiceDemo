@@ -2,7 +2,7 @@
  * @Author: Nxf
  * @Date: 2022-04-05 01:00:19
  * @LastEditors: Nxf
- * @LastEditTime: 2022-04-12 13:02:14
+ * @LastEditTime: 2022-04-14 01:17:32
  * @Descripttion: 整个应用的路由器
  */
 
@@ -43,18 +43,18 @@ const invoiceRoutes = [
         redirect:'/home',
         children:[
             {
-                path:'home',
+                path:'/home',
                 name:'home',
                 meta:{title:'首页'},
                 component:Home
             },
             {
-                path:'/invoiceList',
+                path:'/invoice',
                 component:{render(c) { return c('router-view') }},
+                // redirect:'/invoice/invoiceList',
                 children:[
                     {
-                        // path:'',
-                        path:'/invoiceList',
+                        path:'invoiceList',
                         name:'invoiceList',
                         meta:{title:'发票列表'},
                         component:InvoiceList,
@@ -98,7 +98,7 @@ const invoiceRoutes = [
                     {
                         path:'orderDetail',
                         name:'orderDetail',
-                        meta:{title:'规则详情'},
+                        meta:{title:'订单详情'},
                         component:OrderDetail
                     },
                 ]
