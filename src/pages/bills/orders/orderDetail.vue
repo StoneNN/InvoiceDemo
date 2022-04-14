@@ -1,13 +1,13 @@
 <!--
  * @Author: Nxf
  * @Date: 2022-04-05 01:58:19
- * @LastEditors: Nxf
- * @LastEditTime: 2022-04-12 07:32:31
+ * @LastEditors: Nn
+ * @LastEditTime: 2022-04-14 10:44:15
  * @Descripttion: InvoiceDetailCpnt
 -->
 <template>
   <div>
-    <a-descriptions title="订单详情" bordered>
+    <a-descriptions title="订单详情" bordered :column='3'>
       <a-descriptions-item label="订单号" :span="3">
         {{ orderData.orderCode }}
       </a-descriptions-item>
@@ -20,13 +20,13 @@
       <a-descriptions-item label="订单日期">
         {{ orderData.date }}
       </a-descriptions-item>
-      <a-descriptions-item label="订单数量" :span="2">
+      <a-descriptions-item label="订单数量">
         {{ orderData.quantity }}
       </a-descriptions-item>
       <a-descriptions-item label="商品单价">
         {{ orderData.unitPrice }}
       </a-descriptions-item>
-      <a-descriptions-item label="商品折扣" :span="3">
+      <a-descriptions-item label="商品折扣" :span="2">
         {{ orderData.discount }}
       </a-descriptions-item>
       <a-descriptions-item label="商品总价">

@@ -1,8 +1,8 @@
 <!--
  * @Author: Nxf
  * @Date: 2022-04-05 18:42:09
- * @LastEditors: Nxf
- * @LastEditTime: 2022-04-13 21:06:52
+ * @LastEditors: Nn
+ * @LastEditTime: 2022-04-14 14:55:45
  * @Descripttion: Default Layout
 -->
 
@@ -77,9 +77,11 @@
 const SubMenu = {
   template: `
       <a-sub-menu :key="menuInfo.path" v-bind="$props" v-on="$listeners">
+        
         <span slot="title">
           <a-icon :type="menuInfo.icon" /><span>{{ menuInfo.title }}</span>
         </span>
+
         <template v-for="item in menuInfo.children">
           <a-menu-item v-if="!item.children" :key="item.path">
             <a-icon :type="item.icon" />
@@ -87,11 +89,12 @@ const SubMenu = {
           </a-menu-item>
           <sub-menu v-else :key="item.path" :menu-info="item" />
         </template>
+        
       </a-sub-menu>
     `,
   name: 'SubMenu',
   // must add isSubMenu: true 此项必须被定义
-  //isSubMenu: true,
+  // isSubMenu: true,
   props: {
     // 解构a-sub-menu的属性，也就是文章开头提到的为什么使用函数式组件
     ...Menu.SubMenu.props,
@@ -139,13 +142,13 @@ export default {
             {
               key: '订单',
               title: '订单',
-              path: '/orderList',
+              path: '/orders/orderList',
               icon:'-',
             },
             {
               key: '规则',
               title: '规则',
-              path: '/rulesList',
+              path: '/rules/rulesList',
               icon:'-',
             },
             {

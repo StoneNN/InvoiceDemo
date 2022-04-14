@@ -1,8 +1,8 @@
 <!--
  * @Author: Nn
  * @Date: 2022-04-13 11:50:28
- * @LastEditors: Nxf
- * @LastEditTime: 2022-04-13 20:50:44
+ * @LastEditors: Nn
+ * @LastEditTime: 2022-04-14 10:45:55
  * @Description: breadCrumb
 -->
 
@@ -40,7 +40,7 @@
     },
     methods: {
       init() {
-        console.log(this.$route);
+        console.log('====== route ======',this.$route);
       },
     },
   };
