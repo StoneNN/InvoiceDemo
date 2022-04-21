@@ -2,7 +2,7 @@
  * @Author: Nxf
  * @Date: 2022-04-05 01:00:19
  * @LastEditors: Nn
- * @LastEditTime: 2022-04-14 16:21:19
+ * @LastEditTime: 2022-04-21 17:26:43
  * @Descripttion: 整个应用的路由器
  */
 
@@ -36,42 +36,11 @@ const loginRoutes = [
 ];
 //路由2
 const invoiceRoutes = [
-    {
-        path:'/',
-        name:'首页',
-        component:defaultLot,
-        redirect:'/home',
-        children:[
-            {
-                path:'/home',
-                name:'home',
-                meta:{title:'首页'},
-                component:Home
-            },
-        ]
-    },
-    {
-        path:'/orders',
-        meta:{title:'订单'},
-        component:defaultLot,
-        children:[
-            {
-                path:'orderList',
-                name:'orderList',
-                meta:{title:'订单列表'},
-                component:OrderList,
-            },
-            {
-                path:'orderList/orderDetail',
-                name:'orderDetail',
-                meta:{title:'订单详情'},
-                component:OrderDetail
-            },
-        ]
-    },
+
     {
         path:'/',
         name:'home',
+        meta:{title:'首页'},
         component:defaultLot,
         redirect:'/home',
         children:[
@@ -82,17 +51,19 @@ const invoiceRoutes = [
                 component:Home
             },
             {
-                path:'/orders',
-                component:{render(c) { return c('router-view') }},
+                path:'/orderList',
+                component:{render(c) { return c('router-view')  }},
+                meta:{title:'订单列表'},
+                // redirect:'/orderList',
                 children:[
                     {
-                        path:'orderList',
+                        path:'/orderList',
                         name:'orderList',
-                        meta:{title:'订单列表'},
+                        // meta:{title:'订单列表'},
                         component:OrderList,
                     },
                     {
-                        path:'orderList/orderDetail',
+                        path:'orderDetail',
                         name:'orderDetail',
                         meta:{title:'订单详情'},
                         component:OrderDetail
@@ -100,18 +71,19 @@ const invoiceRoutes = [
                 ]
             },
             {
-                path:'/rules',
+                path:'rulesList',
                 component:{render(c) { return c('router-view') }},
-                // redirect:'rules/rulesList',
+                meta:{title:'规则列表'},
+                redirect:'/rulesList',
                 children:[
                     {
-                        path:'rulesList',
+                        path:'',
                         name:'rulesList',
-                        meta:{title:'规则列表'},
+                        // meta:{title:'规则列表'},
                         component:RulesList,
                     },
                     {
-                        path:'rulesList/rulesDetail',
+                        path:'rulesDetail',
                         name:'rulesDetail',
                         meta:{title:'规则详情'},
                         component:RulesDetail
@@ -119,18 +91,19 @@ const invoiceRoutes = [
                 ]
             },
             {
-                path:'/invoice',
+                path:'invoiceList',
                 component:{render(c) { return c('router-view') }},
-                // redirect:'/invoice/invoiceList',
+                meta:{title:'发票列表'},
+                redirect:'/invoiceList',
                 children:[
                     {
-                        path:'invoiceList',
+                        path:'',
                         name:'invoiceList',
-                        meta:{title:'发票列表'},
+                        // meta:{title:'发票列表'},
                         component:InvoiceList,
                     },
                     {
-                        path:'invoiceList/invoiceDetail',
+                        path:'invoiceDetail',
                         name:'invoiceDetail',
                         meta:{title:'发票详情'},
                         component:InvoiceDetail

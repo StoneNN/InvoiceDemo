@@ -2,7 +2,7 @@
  * @Author: Nxf
  * @Date: 2022-04-11 20:28:06
  * @LastEditors: Nn
- * @LastEditTime: 2022-04-14 12:22:45
+ * @LastEditTime: 2022-04-18 14:51:58
  * @Descripttion: 
 -->
 
@@ -38,7 +38,7 @@
         <template slot="action" slot-scope="text,record">
             <router-link 
                 :to="{
-                    path:'/rules/rulesList/rulesDetail',
+                    path:'/rulesList/rulesDetail',
                     query:{
                         rulesId:record.id
                     }
