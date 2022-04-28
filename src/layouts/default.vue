@@ -2,7 +2,7 @@
  * @Author: Nxf
  * @Date: 2022-04-05 18:42:09
  * @LastEditors: Nn
- * @LastEditTime: 2022-04-18 14:51:40
+ * @LastEditTime: 2022-04-28 17:12:29
  * @Descripttion: Default Layout
 -->
 
@@ -142,7 +142,7 @@ export default {
             {
               key: '订单',
               title: '订单',
-              path: '/orderList',
+              path: '/order/orderList',
               icon:'-',
             },
             {

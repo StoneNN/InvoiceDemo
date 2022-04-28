@@ -1,8 +1,8 @@
 /*
  * @Author: Nn
  * @Date: 2022-04-06 11:28:54
- * @LastEditors: Nxf
- * @LastEditTime: 2022-04-12 08:37:42
+ * @LastEditors: Nn
+ * @LastEditTime: 2022-04-25 17:07:18
  * @Description: 
  */
 const { defineConfig } = require('@vue/cli-service')
@@ -17,5 +17,4 @@ module.exports = defineConfig({
     host: 'localhost' // 主机名，也可以是127.0.0.1，或者真机测试的时候0.0.0.0
   },
   publicPath: "./",// 基本路径
-
 })

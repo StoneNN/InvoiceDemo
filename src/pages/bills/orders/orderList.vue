@@ -2,7 +2,7 @@
  * @Author: Nxf
  * @Date: 2022-04-05 00:39:14
  * @LastEditors: Nn
- * @LastEditTime: 2022-04-18 14:40:45
+ * @LastEditTime: 2022-04-28 17:13:40
  * @Descripttion: 
 -->
 
@@ -39,7 +39,7 @@
         <template slot="action" slot-scope="text,record">
             <router-link 
                 :to="{
-                    path:'/orderList/orderDetail',
+                    path:'/order/orderList/orderDetail',
                     query:{
                         orderId:record.id
                     }

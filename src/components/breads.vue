@@ -2,7 +2,7 @@
  * @Author: Nn
  * @Date: 2022-04-13 11:50:28
  * @LastEditors: Nn
- * @LastEditTime: 2022-04-21 17:39:04
+ * @LastEditTime: 2022-04-28 17:25:10
  * @Description: breadCrumb
 -->
 
@@ -20,6 +20,28 @@
         }}</router-link>
       </a-breadcrumb-item>
     </a-breadcrumb>
+    <a-breadcrumb separator=">">
+      <a-breadcrumb-item
+        v-for="(item, index) of lists"
+        :key="index"
+        style="padding: 5px"
+      >
+        <router-link :to="item.path" style="font-size: 18px">{{
+          item.path
+        }}</router-link>
+      </a-breadcrumb-item>
+    </a-breadcrumb>
+    <a-breadcrumb separator=">">
+      <a-breadcrumb-item
+        v-for="(item, index) of lists"
+        :key="index"
+        style="padding: 5px"
+      >
+        <router-link :to="item.path" style="font-size: 18px">{{
+          item.name
+        }}</router-link>
+      </a-breadcrumb-item>
+    </a-breadcrumb>
   </div>
 </template>
 
@@ -34,7 +56,17 @@
     name:"BreadCrumbCpnt",
     data(){
       return{
-        lists:[]
+        lists:[],
+        breadCrumbNameMap:{
+
+          '/home':'首页',
+
+          '/order':'订单',
+          '/order/orderList':'订单列表',
+          '/order/orderList/orderDetail':'订单详情',
+
+
+        }
       }
     },
     watch: {
@@ -46,7 +78,7 @@
     methods: {
       init(to, from) {
         console.log('====== route ======',this.$route);
-        console.log('====== route to ======',to);
+        console.log('====== route to ======',to.path);
         let matched = to.matched;
         // if (matched.length && matched[0].name !== "home") {
         //   matched = [
@@ -59,6 +91,7 @@
         //   ];
         // }
         this.lists = matched;
+        console.log('====== route lists ======',this.lists);
       },
     },
   };

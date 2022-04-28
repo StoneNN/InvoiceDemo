@@ -2,7 +2,7 @@
  * @Author: Nxf
  * @Date: 2022-04-05 01:00:19
  * @LastEditors: Nn
- * @LastEditTime: 2022-04-21 17:26:43
+ * @LastEditTime: 2022-04-28 17:12:45
  * @Descripttion: 整个应用的路由器
  */
 
@@ -40,7 +40,7 @@ const invoiceRoutes = [
     {
         path:'/',
         name:'home',
-        meta:{title:'首页'},
+        // meta:{title:'首页'},
         component:defaultLot,
         redirect:'/home',
         children:[
@@ -51,16 +51,16 @@ const invoiceRoutes = [
                 component:Home
             },
             {
-                path:'/orderList',
+                path:'order/orderList',
                 component:{render(c) { return c('router-view')  }},
-                meta:{title:'订单列表'},
-                // redirect:'/orderList',
+                meta:{title:'订单'},
+                redirect:'order/orderList',
                 children:[
                     {
-                        path:'/orderList',
+                        path:'',
                         name:'orderList',
-                        // meta:{title:'订单列表'},
-                        component:OrderList,
+                        meta:{title:'订单列表'},
+                        component:OrderList
                     },
                     {
                         path:'orderDetail',
@@ -73,13 +73,13 @@ const invoiceRoutes = [
             {
                 path:'rulesList',
                 component:{render(c) { return c('router-view') }},
-                meta:{title:'规则列表'},
-                redirect:'/rulesList',
+                meta:{title:'规则'},
+                redirect:'rulesList',
                 children:[
                     {
                         path:'',
                         name:'rulesList',
-                        // meta:{title:'规则列表'},
+                        meta:{title:'规则列表'},
                         component:RulesList,
                     },
                     {
@@ -94,7 +94,7 @@ const invoiceRoutes = [
                 path:'invoiceList',
                 component:{render(c) { return c('router-view') }},
                 meta:{title:'发票列表'},
-                redirect:'/invoiceList',
+                redirect:'invoiceList',
                 children:[
                     {
                         path:'',
