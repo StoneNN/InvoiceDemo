@@ -1,8 +1,8 @@
 /*
  * @Author: Nxf
  * @Date: 2022-04-05 01:00:19
- * @LastEditors: Nn
- * @LastEditTime: 2022-04-28 17:12:45
+ * @LastEditors: Nxf
+ * @LastEditTime: 2022-04-29 00:46:50
  * @Descripttion: 整个应用的路由器
  */
 
@@ -11,7 +11,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 //引入布局
-import loginLot from '../layouts/login.vue';
+import loginLot from '../layouts/loginLot.vue';
 import defaultLot from '../layouts/default.vue';
 
 //引入组件
@@ -22,7 +22,9 @@ import InvoiceList from '../pages/bills/invoices/InvoiceList.vue';
 import InvoiceDetail from '../pages/bills/invoices/InvoiceDetail.vue';
 import RulesList from '@/pages/bills/rules/rulesList.vue';
 import RulesDetail from '@/pages/bills/rules/rulesDetail.vue';
-import User from '../pages/User.vue';
+import User from '../pages/user.vue';
+import Login from '@/pages/login.vue';
+
 //  --2.--注入VueRouter插件
 Vue.use(VueRouter);
 
@@ -31,7 +33,16 @@ const loginRoutes = [
     {
         path:'/userLogin',
         name:'yongHuDengLu',
-        component:loginLot
+        component:loginLot,
+        redirect:'/userLogin',
+        children:[
+            {
+                path:'',
+                name:'userLogin',
+                meta:{title:'用户登录'},
+                component:Login
+            }
+        ]
     }
 ];
 //路由2
@@ -40,7 +51,6 @@ const invoiceRoutes = [
     {
         path:'/',
         name:'home',
-        // meta:{title:'首页'},
         component:defaultLot,
         redirect:'/home',
         children:[
@@ -51,10 +61,14 @@ const invoiceRoutes = [
                 component:Home
             },
             {
-                path:'order/orderList',
+                path:'/financial',
+                redirect:'financial/orderList'
+            },
+            {
+                path:'financial/orderList',
                 component:{render(c) { return c('router-view')  }},
                 meta:{title:'订单'},
-                redirect:'order/orderList',
+                redirect:'financial/orderList',
                 children:[
                     {
                         path:'',
@@ -71,10 +85,10 @@ const invoiceRoutes = [
                 ]
             },
             {
-                path:'rulesList',
+                path:'financial/rulesList',
                 component:{render(c) { return c('router-view') }},
                 meta:{title:'规则'},
-                redirect:'rulesList',
+                redirect:'financial/rulesList',
                 children:[
                     {
                         path:'',
@@ -91,10 +105,10 @@ const invoiceRoutes = [
                 ]
             },
             {
-                path:'invoiceList',
+                path:'financial/invoiceList',
                 component:{render(c) { return c('router-view') }},
                 meta:{title:'发票列表'},
-                redirect:'invoiceList',
+                redirect:'financial/invoiceList',
                 children:[
                     {
                         path:'',

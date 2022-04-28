@@ -39,7 +39,7 @@
         <template slot="action" slot-scope="text,record">
             <router-link 
                 :to="{
-                    path:'/order/orderList/orderDetail',
+                    path:'/financial/orderList/orderDetail',
                     query:{
                         orderId:record.id
                     }

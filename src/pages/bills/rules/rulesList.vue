@@ -38,7 +38,7 @@
         <template slot="action" slot-scope="text,record">
             <router-link 
                 :to="{
-                    path:'/rulesList/rulesDetail',
+                    path:'/financial/rulesList/rulesDetail',
                     query:{
                         rulesId:record.id
                     }

@@ -1,8 +1,8 @@
 <!--
  * @Author: Nxf
  * @Date: 2022-04-05 18:42:09
- * @LastEditors: Nn
- * @LastEditTime: 2022-04-28 17:12:29
+ * @LastEditors: Nxf
+ * @LastEditTime: 2022-04-29 00:52:38
  * @Descripttion: Default Layout
 -->
 
@@ -142,19 +142,19 @@ export default {
             {
               key: '订单',
               title: '订单',
-              path: '/order/orderList',
+              path: '/financial/orderList',
               icon:'-',
             },
             {
               key: '规则',
               title: '规则',
-              path: '/rulesList',
+              path: '/financial/rulesList',
               icon:'-',
             },
             {
               key: '发票',
               title: '发票',
-              path: '/invoiceList',
+              path: '/financial/invoiceList',
               icon:'-',
             },
           ],

@@ -1,8 +1,8 @@
 <!--
  * @Author: Nxf
  * @Date: 2022-04-05 00:39:14
- * @LastEditors: Nn
- * @LastEditTime: 2022-04-18 14:52:03
+ * @LastEditors: Nxf
+ * @LastEditTime: 2022-04-28 23:28:56
  * @Descripttion: 
 -->
 
@@ -41,7 +41,7 @@
         <template slot="action" slot-scope="text,record">
             <router-link 
                 :to="{
-                    path:'/invoiceList/invoiceDetail',
+                    path:'/financial/invoiceList/invoiceDetail',
                     query:{
                         invoiceId:record.id
                     }

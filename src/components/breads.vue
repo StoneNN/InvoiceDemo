@@ -1,47 +1,27 @@
 <!--
  * @Author: Nn
  * @Date: 2022-04-13 11:50:28
- * @LastEditors: Nn
- * @LastEditTime: 2022-04-28 17:25:10
+ * @LastEditors: Nxf
+ * @LastEditTime: 2022-04-28 23:34:40
  * @Description: breadCrumb
 -->
 
 
 <template>
-  <div class="bao">
+  <div class="mianBaoXie">
+
     <a-breadcrumb separator=">">
       <a-breadcrumb-item
         v-for="(item, index) of lists"
         :key="index"
         style="padding: 5px"
       >
-        <router-link :to="item.path" style="font-size: 18px">{{
-          item.meta.title
+        <router-link :to="item" style="font-size: 13px">{{
+          breadCrumbNameMap[item]
         }}</router-link>
       </a-breadcrumb-item>
     </a-breadcrumb>
-    <a-breadcrumb separator=">">
-      <a-breadcrumb-item
-        v-for="(item, index) of lists"
-        :key="index"
-        style="padding: 5px"
-      >
-        <router-link :to="item.path" style="font-size: 18px">{{
-          item.path
-        }}</router-link>
-      </a-breadcrumb-item>
-    </a-breadcrumb>
-    <a-breadcrumb separator=">">
-      <a-breadcrumb-item
-        v-for="(item, index) of lists"
-        :key="index"
-        style="padding: 5px"
-      >
-        <router-link :to="item.path" style="font-size: 18px">{{
-          item.name
-        }}</router-link>
-      </a-breadcrumb-item>
-    </a-breadcrumb>
+    
   </div>
 </template>
 
@@ -61,10 +41,13 @@
 
           '/home':'首页',
 
-          '/order':'订单',
-          '/order/orderList':'订单列表',
-          '/order/orderList/orderDetail':'订单详情',
-
+          '/financial':'财务信息',
+          '/financial/orderList':'订单列表',
+          '/financial/orderList/orderDetail':'订单详情',
+          '/financial/rulesList':'规则列表',
+          '/financial/rulesList/rulesDetail':'规则详情',
+          '/financial/invoiceList':'发票列表',
+          '/financial/invoiceList/invoiceDetail':'发票详情',
 
         }
       }
@@ -78,8 +61,21 @@
     methods: {
       init(to, from) {
         console.log('====== route ======',this.$route);
-        console.log('====== route to ======',to.path);
-        let matched = to.matched;
+        console.log('====== route to ======',to.path, from.path);
+        //、、、
+
+        const pathSnippets = to.path.split("/").filter(i => i);
+        console.log("-----pathSnippets----", pathSnippets);
+
+        var breads = pathSnippets.map((_, index) => {
+          const url = `/${pathSnippets.slice(0, index + 1).join("/")}`;
+          console.log("-----url----", url);
+          return (
+            url
+          );
+        });
+        console.log('----breads--',breads);
+        // 、、、
         // if (matched.length && matched[0].name !== "home") {
         //   matched = [
         //     { 
@@ -90,7 +86,7 @@
         //     ...matched
         //   ];
         // }
-        this.lists = matched;
+        this.lists = breads;
         console.log('====== route lists ======',this.lists);
       },
     },
@@ -98,12 +94,13 @@
 </script>
 
 <style scoped>
-.bao {
-  background-color: #fff;
-  padding: 5px 0px;
-  margin-bottom: 20px;
-  border: 1px solid #dddddd;
-  padding-left: 10px;
-  border-radius: 10px;
-}
+  .mianBaoXie {
+    background-color: white;
+    padding: 5px 0px;
+    margin-bottom: 20px;
+    border: 1px solid #dddddd;
+    padding-left: 10px;
+    border-radius: 10px;
+    text-align: left;
+  }
 </style>
