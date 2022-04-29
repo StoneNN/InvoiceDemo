@@ -1,8 +1,8 @@
 <!--
  * @Author: Nxf
  * @Date: 2022-04-05 18:42:09
- * @LastEditors: Nxf
- * @LastEditTime: 2022-04-29 00:52:38
+ * @LastEditors: Nn
+ * @LastEditTime: 2022-04-29 17:01:05
  * @Descripttion: Default Layout
 -->
 
@@ -54,7 +54,7 @@
         </a-layout-sider>
         <!-- 内容区 -->
         <a-layout-content>
-          <bread-crumb-router> </bread-crumb-router>
+          <bread-crumb-router :currentPath="currentPath"/>
           <router-view ></router-view>
         </a-layout-content>
       </a-layout>
@@ -186,6 +186,8 @@ export default {
           ]
         }
       ],
+      //当前路由路径
+      currentPath
     }
   },
   created(){
@@ -195,6 +197,10 @@ export default {
       // 存在即赋值
       this.openKeys = JSON.parse(openKeys)
     }
+  },
+  mounted(){
+    this.currentPath = this.$route.path;
+    console.log('----------  121212  -------',this.$route.path);
   },
   methods: {
     // 点击菜单，路由跳转,注意的是当点击MenuItem才会触发此函数

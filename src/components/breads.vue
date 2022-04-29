@@ -1,8 +1,8 @@
 <!--
  * @Author: Nn
  * @Date: 2022-04-13 11:50:28
- * @LastEditors: Nxf
- * @LastEditTime: 2022-04-28 23:34:40
+ * @LastEditors: Nn
+ * @LastEditTime: 2022-04-29 16:37:29
  * @Description: breadCrumb
 -->
 
@@ -34,6 +34,9 @@
   
   export default {
     name:"BreadCrumbCpnt",
+    props:{
+      currentPath:String
+    },
     data(){
       return{
         lists:[],
@@ -56,6 +59,7 @@
       $route: "init",
     },
     mounted() {
+      console.log('----- currentPath -----',this.currentPath);
       console.log(this.$route.matched);
     },
     methods: {
